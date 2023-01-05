@@ -1,8 +1,8 @@
-const prod = process.env.NODE_ENV === 'production'
-
-const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+require('dotenv').config()
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -31,9 +31,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
-    new MiniCssExtractPlugin(),
-    new Dotenv({
-      path: './.env'
-    })
+    new MiniCssExtractPlugin()
   ]
 }
