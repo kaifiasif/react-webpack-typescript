@@ -1,0 +1,60 @@
+{
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-react", { "runtime": "automatic" }],
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["."],
+            "alias": {
+              "assets": "./src/assets",
+              "components": "./src/components",
+              "constants": "./src/constants",
+              "hooks": "./src/hooks",
+              "lib": "./src/lib",
+              "styles": "./src/styles"
+            }
+          }
+        ]
+      ]
+    },
+    "compile": {
+      "presets": [
+        ["@babel/preset-react", { "runtime": "automatic" }],
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+      ],
+      "plugins": [
+        [
+          "module-resolver",
+          {
+            "root": ["."],
+            "alias": {
+              "assets": "./src/assets",
+              "components": "./src/components",
+              "constants": "./src/constants",
+              "hooks": "./src/hooks",
+              "lib": "./src/lib",
+              "styles": "./src/styles"
+            }
+          }
+        ],
+        "react-remove-properties"
+      ],
+      "ignore": [
+        "**/_mocks_",
+        "**/_snapshots_",
+        "**/stories",
+        "**/setupTests.js",
+        "**/stories.js",
+        "**/test.js",
+        "*/.d.ts"
+      ]
+    }
+  }
+}
