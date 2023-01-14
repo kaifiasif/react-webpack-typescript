@@ -1,33 +1,99 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  extends: [
+    'airbnb-typescript',
+    'plugin:import/typescript',
+    'plugin:react/recommended',
+    'prettier',
+    'plugin:import/recommended'
+  ],
+  env: {
+    browser: true
+  },
+  globals: {
+    renderComponent: true
+  },
+  plugins: ['prettier', 'react-hooks', 'import'],
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module'
+    project: './tsconfig.json'
+  },
+  rules: {
+    'array-bracket-spacing': ['warn', 'always'],
+    'comma-dangle': ['error', 'never'],
+    'no-class-assign': ['off'],
+    'no-func-assign': ['off'],
+    'no-param-reassign': ['error', { props: false }],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
+    'react/forbid-prop-types': ['off'],
+    'react/jsx-filename-extension': [
+      'error',
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
+    ],
+    'react/jsx-props-no-spreading': [0],
+    'react/display-name': [0, { ignoreTranspilerName: false }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    semi: ['error', 'never'],
+    'jsx-a11y/anchor-is-valid': ['off'],
+    'react/prop-types': ['off'],
+    'react/react-in-jsx-scope': 0,
+    'jsx-a11y/label-has-for': 0,
+    // 'jsx-a11y/label-has-associated-control': [
+    //   'error',
+    //   {
+    //     required: {
+    //       some: ['nesting', 'id']
+    //     }
+    //   }
+    // ],
+    'react/no-unused-prop-types': ['off'],
+    'react/no-did-mount-set-state': ['off'],
+    'react/no-typos': ['off'],
+    'no-unused-vars': [
+      2,
+      {
+        vars: 'all',
+        ignoreRestSiblings: true,
+        varsIgnorePattern: '^_',
+        args: 'all',
+        argsIgnorePattern: '^_'
+      }
+    ],
+    'arrow-parens': [2, 'as-needed'],
+    'import/no-extraneous-dependencies': [0],
+    'no-mixed-operators': 'off',
+    'object-curly-newline': 'off',
+    // 'import/extensions': [
+    //   'error',
+    //   'always',
+    //   {
+    //     js: 'never',
+    //     jsx: 'never',
+    //     ts: 'never',
+    //     tsx: 'never'
+    //   }
+    // ],
+    'import/no-named-as-default': [0],
+    '@typescript-eslint/comma-dangle': ['error', 'never'],
+    '@typescript-eslint/object-curly-spacing': 'warn',
+    '@typescript-eslint/semi': ['error', 'never'],
+    '@typescript-eslint/space-before-blocks': 'off',
+    'max-len': [
+      'error',
+      {
+        code: 150,
+        ignoreComments: true,
+        ignoreStrings: true,
+        ignoreRegExpLiterals: true,
+        ignoreTemplateLiterals: true
+      }
+    ]
   },
   settings: {
+    'import/resolver': {
+      typescript: {}
+    },
     react: {
       version: 'detect'
     }
-  },
-  extends: [
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'plugin:jsx-a11y/recommended',
-    'plugin:eslint-comments/recommended',
-    'prettier/@typescript-eslint',
-    'plugin:prettier/recommended'
-  ],
-  rules: {
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
-    '@typescript-eslint/no-var-requires': 'off',
-    'react/prop-types': 'off',
-    'react/jsx-uses-react': 'off',
-    'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off'
   }
 }

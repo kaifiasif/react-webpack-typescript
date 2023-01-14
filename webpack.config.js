@@ -1,6 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const aliasConfig = require(__dirname + '/alias.config.js')
+
 require('dotenv').config()
 const prod = process.env.NODE_ENV === 'production'
 
@@ -9,6 +11,22 @@ module.exports = {
   entry: './src/index.tsx',
   output: {
     path: __dirname + '/dist/'
+  },
+  devServer: {
+    port: process.env.HOST
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
+  performance: {
+    hints: false
+  },
+  resolve: {
+    alias: aliasConfig.resolve.alias,
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    preferRelative: false
   },
   module: {
     rules: [
@@ -29,7 +47,8 @@ module.exports = {
   devtool: prod ? undefined : 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'index.html',
+      favicon: './assets/favicon.ico'
     }),
     new MiniCssExtractPlugin()
   ]
